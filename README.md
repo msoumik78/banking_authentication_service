@@ -15,8 +15,9 @@ CREATE TABLE BankingUser (
     username varchar(100),
     password varchar(100)
 );    
-DML:   
-Insert into BankingUser(username, password) values('sanjoy', '$2a$10$v7ygjYVojN/QCyCqrbAa6.aCVDWrzo1ItCwU6futK51A/BOmxI0Iy');
+
+DML:    
+Insert into BankingUser(username, password) values('sanjoy', '$2a$10$v7ygjYVojN/QCyCqrbAa6.aCVDWrzo1ItCwU6futK51A/BOmxI0Iy');        
 * Note that the password entered in the above DML is a Bcrypt encrypted hash. Please use this link to encrypt your own password: https://bcrypt-generator.com/    
 
 ### Compiling and packaging
