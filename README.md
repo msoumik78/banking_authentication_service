@@ -1,8 +1,6 @@
 # Banking authentication microservice
-This project gives a simple overview of the power and the simplicity of the Spring Data JPA.
-Spring data JPA still requires a JPA implemetor (like Hibernate) but it reduces the boilerplate code that the developer has to write. 
+This project is a Spring boot based authentication microservice which produces a JWT token on sucvcessful authentication.
 
-For more details on the advantages of Spring data JPA, please refer to my blog here [Soumik's blog on Spring data JPA](https://msoumik78.github.io/java/2019/05/25/why-use-spring-data-jpa.html)
 
 
 ### Dependencies
@@ -10,15 +8,23 @@ For more details on the advantages of Spring data JPA, please refer to my blog h
 * Java 8 should be installed and available in the system. JAVA_HOME environment variable should be set and pointing to the location of Java 8.
 * Maven should be installed in the system and set in PATH.
 * A database like MySQL should be installed and accessible in the system.
-* Please go to the file **resources/META-INF/persistence.xml** and update the properties with details of the MySQL database.
-* Also a table named **Customer** should be created in the database.
+* Also a table named **BankingUser** should be created in the database.Below is a DDL and DML to create and populate the table:
+DDL: 
+CREATE TABLE BankingUser (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    username varchar(100),
+    password varchar(100)
+);
+DML:
+Insert into BankingUser(username, password) values('sanjoy', '$2a$10$v7ygjYVojN/QCyCqrbAa6.aCVDWrzo1ItCwU6futK51A/BOmxI0Iy');
+* Note that the password entered in the above DML is a Bcrypt encrypted hash. Please use this link to encrypt your own password: https://bcrypt-generator.com/
 
-### Compiling
+### Compiling and packaging
 
- `mvn clean compile `
+ `mvn clean package -DskipTests `
 
 ### Running program
 
 The below command runs the program            
 
-`mvn exec:java -Dexec.mainClass="org.experiment.spring_data_jpa_without_springboot.CustomerTest" `
+`mvn spring-boot:run" `
